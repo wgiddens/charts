@@ -142,7 +142,7 @@ ingress:
 # TODO: add support for plugins https://docs.sentry.io/server/plugins/
 
 postgresql:
-  enabled: false
+  enabled: true
   postgresDatabase: sentry
   postgresUser: sentry
   # Only used when internal PG is disabled
