@@ -5,7 +5,7 @@ controller:
   name: controller
   image:
     repository: quay.io/kubernetes-ingress-controller/nginx-ingress-controller
-    tag: "0.17.1"
+    tag: "0.18.0"
     pullPolicy: IfNotPresent
 
   config: {}
@@ -295,6 +295,8 @@ defaultBackend:
     pullPolicy: IfNotPresent
 
   extraArgs: {}
+
+  port: 8080
 
   ## Node tolerations for server scheduling to nodes with taints
   ## Ref: https://kubernetes.io/docs/concepts/configuration/assign-pod-node/
