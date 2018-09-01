@@ -12,9 +12,7 @@ $ helm install --wait stable/sentry
 
 This chart bootstraps a [Sentry](https://sentry.io/) deployment on a [Kubernetes](http://kubernetes.io) cluster using the [Helm](https://helm.sh) package manager.
 
-It also packages the [PostgreSQL](https://github.com/kubernetes/charts/tree/master/stable/postgresql) and [Redis](https://github.com/kubernetes/charts/tree/master/stable/redis) which are required for Sentry.
-
-> **Warning**: This chart does not yet allow for you to specify your own database host or redis host.
+It also optionally packages the [PostgreSQL](https://github.com/kubernetes/charts/tree/master/stable/postgresql) and [Redis](https://github.com/kubernetes/charts/tree/master/stable/redis) which are required for Sentry.
 
 ## Prerequisites
 
@@ -103,6 +101,9 @@ The following table lists the configurable parameters of the Sentry chart and th
 | `ingress.annotations`                | Ingress annotations                         | `{}`                                                       |
 | `ingress.hostname`                   | URL to address your Sentry installation     | `sentry.local`                                             |
 | `ingress.tls`                        | Ingress TLS configuration                   | `[]`                                                       |
+| `postgresql.enabled`                 | Enable Postgres deployment                  | `true`                                                     |
+| `postgresql.postgresHost`            | External postgres host                      | `nil`                                                      |
+| `postgresql.postgresPassword`        | External postgres password                  | `nil`                                                      |
 | `persistence.enabled`                | Enable persistence using PVC                | `true`                                                     |
 | `persistence.storageClass`           | PVC Storage Class                           | `nil` (uses alpha storage class annotation)                |
 | `persistence.accessMode`             | PVC Access Mode                             | `ReadWriteOnce`                                            |
@@ -127,6 +128,10 @@ $ helm install --name my-release -f values.yaml stable/sentry
 ```
 
 > **Tip**: You can use the default [values.yaml](values.yaml)
+
+## PostgresSQL
+
+By default, PostgreSQL in installed as part of the chart. To use an external PostgreSQL server set `postgresql.enabled` to `false` and set `postgresql.postgresHost` and `postgresql.postgresPassword` accordingly.
 
 ## Persistence
 
