@@ -101,9 +101,12 @@ The following table lists the configurable parameters of the Sentry chart and th
 | `ingress.annotations`                | Ingress annotations                         | `{}`                                                       |
 | `ingress.hostname`                   | URL to address your Sentry installation     | `sentry.local`                                             |
 | `ingress.tls`                        | Ingress TLS configuration                   | `[]`                                                       |
-| `postgresql.enabled`                 | Enable Postgres deployment                  | `true`                                                     |
+| `postgresql.enabled`                 | Deploy postgres server (see below)          | `true`                                                     |
+| `postgresql.postgresDatabase`        | Postgres database name                      | `sentry`                                                   |
+| `postgresql.postgresUser`            | Postgres username                           | `sentry`                                                   |
 | `postgresql.postgresHost`            | External postgres host                      | `nil`                                                      |
 | `postgresql.postgresPassword`        | External postgres password                  | `nil`                                                      |
+| `postgresql.postgresPort`            | External postgres port                      | `5432`                                                     |
 | `persistence.enabled`                | Enable persistence using PVC                | `true`                                                     |
 | `persistence.storageClass`           | PVC Storage Class                           | `nil` (uses alpha storage class annotation)                |
 | `persistence.accessMode`             | PVC Access Mode                             | `ReadWriteOnce`                                            |
@@ -131,7 +134,7 @@ $ helm install --name my-release -f values.yaml stable/sentry
 
 ## PostgresSQL
 
-By default, PostgreSQL in installed as part of the chart. To use an external PostgreSQL server set `postgresql.enabled` to `false` and set `postgresql.postgresHost` and `postgresql.postgresPassword` accordingly.
+By default, PostgreSQL is installed as part of the chart. To use an external PostgreSQL server set `postgresql.enabled` to `false` and then set `postgresql.postgresHost` and `postgresql.postgresPassword`. The other options (`postgresql.postgresDatabase`, `postgresql.postgresUser` and `postgresql.postgresPort`) may also want changing from their default values.
 
 ## Persistence
 

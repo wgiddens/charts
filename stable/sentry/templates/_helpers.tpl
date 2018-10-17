@@ -50,3 +50,14 @@ Set postgres secret
 {{- template "fullname" . -}}
 {{- end -}}
 {{- end -}}
+
+{{/*
+Set postgres port
+*/}}
+{{- define "postgresql.port" -}}
+{{- if .Values.postgresql.enabled -}}
+    "5432"
+{{- else -}}
+{{- default "5432" .Values.postgresql.postgresPort | quote -}}
+{{- end -}}
+{{- end -}}

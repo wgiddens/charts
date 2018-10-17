@@ -146,6 +146,7 @@ postgresql:
   # Only used when internal PG is disabled
   # postgresHost: postgres
   # postgresPassword: postgres
+  # postgresPort: 5432
   imageTag: "9.6"
   persistence:
     enabled: true
